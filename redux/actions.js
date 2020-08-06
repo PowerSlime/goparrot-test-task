@@ -1,54 +1,54 @@
 import {
-    ADD_BOOK_TO_SHELVE,
-    ADD_SHELVE,
-    REMOVE_BOOK_FROM_SHELVE,
-    REMOVE_SHELVE,
-    SET_SHELVE_CATEGORY,
-    SET_SHELVE_REVIEW,
+    ADD_BOOK_TO_SHELF,
+    ADD_SHELF,
+    REMOVE_BOOK_FROM_SHELF,
+    REMOVE_SHELF,
+    SET_SHELF_CATEGORY,
+    SET_SHELF_REVIEW,
 } from "./actionTypes";
 
-export const addShelve = (name) => ({
-    type: ADD_SHELVE,
+export const addShelf = (name) => ({
+    type: ADD_SHELF,
     payload: {
         name,
     },
 });
 
-export const removeShelve = (name) => ({
-    type: REMOVE_SHELVE,
+export const removeShelf = (name) => ({
+    type: REMOVE_SHELF,
     payload: {
         name,
     },
 });
 
-export const setShelveReview = (shelveName, review) => ({
-    type: SET_SHELVE_REVIEW,
+export const setShelfReview = (shelfName, review) => ({
+    type: SET_SHELF_REVIEW,
     payload: {
-        name: shelveName,
+        name: shelfName,
         review,
     },
 });
 
-export const setShelveCategory = (shelveName, categoryId) => ({
-    type: SET_SHELVE_CATEGORY,
+export const setShelfCategory = (shelfName, categoryId) => ({
+    type: SET_SHELF_CATEGORY,
     payload: {
-        name: shelveName,
+        name: shelfName,
         id: categoryId,
     },
 });
 
-export const addBookToShelve = (shelveName, bookId) => ({
-    type: ADD_BOOK_TO_SHELVE,
+export const addBookToShelf = (shelfName, bookId) => ({
+    type: ADD_BOOK_TO_SHELF,
     payload: {
-        name: shelveName,
+        name: shelfName,
         id: bookId,
     },
 });
 
-export const removeBookFromShelve = (shelveName, bookId) => ({
-    type: REMOVE_BOOK_FROM_SHELVE,
+export const removeBookFromShelf = (shelfName, bookId) => ({
+    type: REMOVE_BOOK_FROM_SHELF,
     payload: {
-        name: shelveName,
+        name: shelfName,
         id: bookId,
     },
 });

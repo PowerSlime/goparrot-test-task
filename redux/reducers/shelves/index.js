@@ -1,17 +1,17 @@
 import {
-    ADD_BOOK_TO_SHELVE,
-    ADD_SHELVE,
-    REMOVE_BOOK_FROM_SHELVE,
-    REMOVE_SHELVE,
-    SET_SHELVE_CATEGORY,
-    SET_SHELVE_REVIEW,
+    ADD_BOOK_TO_SHELF,
+    ADD_SHELF,
+    REMOVE_BOOK_FROM_SHELF,
+    REMOVE_SHELF,
+    SET_SHELF_CATEGORY,
+    SET_SHELF_REVIEW,
 } from "../../actionTypes";
 
 const initialState = {};
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case ADD_SHELVE:
+        case ADD_SHELF:
             if (!(payload.name in state)) {
                 return {
                     ...state,
@@ -20,13 +20,13 @@ const reducer = (state = initialState, { type, payload }) => {
             }
             return state;
 
-        case REMOVE_SHELVE: {
+        case REMOVE_SHELF: {
             const temp = { ...state };
             delete temp[payload.name];
             return temp;
         }
 
-        case SET_SHELVE_REVIEW: {
+        case SET_SHELF_REVIEW: {
             if (payload.name in state) {
                 return {
                     ...state,
@@ -40,7 +40,7 @@ const reducer = (state = initialState, { type, payload }) => {
             return state;
         }
 
-        case SET_SHELVE_CATEGORY: {
+        case SET_SHELF_CATEGORY: {
             if (payload.name in state) {
                 return {
                     ...state,
@@ -55,7 +55,7 @@ const reducer = (state = initialState, { type, payload }) => {
             return state;
         }
 
-        case ADD_BOOK_TO_SHELVE: {
+        case ADD_BOOK_TO_SHELF: {
             if (payload.name in state) {
                 return {
                     ...state,
@@ -69,7 +69,7 @@ const reducer = (state = initialState, { type, payload }) => {
             return state;
         }
 
-        case REMOVE_BOOK_FROM_SHELVE: {
+        case REMOVE_BOOK_FROM_SHELF: {
             if (payload.name in state) {
                 const books = [...state[payload.name].books];
                 const index = books.findIndex((i) => i === payload.id);

@@ -5,12 +5,12 @@ import React, { useCallback, useContext, useMemo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { CategoriesContext } from "../../contexts/categories";
-import { addShelve } from "../../redux/actions";
+import { addShelf } from "../../redux/actions";
 import { getShelvesStore } from "../../redux/selectors";
 import styles from "./styles.module.sass";
 
 const Shelves = () => {
-    const [shelveName, setShelveName] = useState("");
+    const [shelf, setShelfName] = useState("");
     const shelves = useSelector(getShelvesStore, shallowEqual);
     const dispatch = useDispatch();
     const router = useRouter();
@@ -41,19 +41,19 @@ const Shelves = () => {
     );
 
     const onInputChange = (e) => {
-        setShelveName(e.target.value);
+        setShelfName(e.target.value);
     };
 
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            if (shelveName) {
-                dispatch(addShelve(shelveName));
+            if (shelf) {
+                dispatch(addShelf(shelf));
             }
 
-            setShelveName("");
+            setShelfName("");
         },
-        [dispatch, shelveName],
+        [dispatch, shelf],
     );
 
     const onRow = (record) => {
@@ -66,7 +66,7 @@ const Shelves = () => {
         <div>
             <div className={styles.ButtonsContainer}>
                 <form className={cn(styles.Actions, styles.Buttons)} onSubmit={onSubmit}>
-                    <Input value={shelveName} placeholder="Name" onChange={onInputChange} />
+                    <Input value={shelf} placeholder="Name" onChange={onInputChange} />
                     <Button type="submit">Add</Button>
                 </form>
             </div>

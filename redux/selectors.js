@@ -1,6 +1,6 @@
 export const getShelvesStore = (store) => store.shelves;
 
-export const getShelve = (shelveName) => (store) => getShelvesStore(store)[shelveName];
+export const getShelf = (shelfName) => (store) => getShelvesStore(store)[shelfName];
 
 export const getBooksOnShelves = (store) => {
     const shelves = getShelvesStore(store);

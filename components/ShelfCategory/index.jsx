@@ -2,9 +2,9 @@ import { Select } from "antd";
 import PropTypes from "prop-types";
 import React from "react";
 
-const ShelveCategory = ({ value, items, onChange }) => {
+const ShelfCategory = ({ value, items, onChange }) => {
     return (
-        <Select value={value} placeholder="Shelve category" allowClear onChange={onChange}>
+        <Select value={value} placeholder="Shelf category" allowClear onChange={onChange}>
             {items.map((item) => (
                 <Select.Option key={item.id} value={item.id}>
                     {item.name}
@@ -14,7 +14,7 @@ const ShelveCategory = ({ value, items, onChange }) => {
     );
 };
 
-ShelveCategory.propTypes = {
+ShelfCategory.propTypes = {
     value: PropTypes.number,
     items: PropTypes.arrayOf(
         PropTypes.shape({
@@ -25,10 +25,10 @@ ShelveCategory.propTypes = {
     onChange: PropTypes.func,
 };
 
-ShelveCategory.defaultProps = {
+ShelfCategory.defaultProps = {
     value: undefined,
     items: [],
     onChange: () => undefined,
 };
 
-export default ShelveCategory;
+export default ShelfCategory;
