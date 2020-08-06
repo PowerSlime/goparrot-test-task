@@ -21,9 +21,10 @@ export const removeShelve = (name) => ({
     },
 });
 
-export const setShelveReview = (review) => ({
+export const setShelveReview = (shelveName, review) => ({
     type: SET_SHELVE_REVIEW,
     payload: {
+        name: shelveName,
         review,
     },
 });

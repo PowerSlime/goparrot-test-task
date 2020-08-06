@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Input, Typography } from "antd";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import React, { useCallback, useContext } from "react";
@@ -8,7 +8,7 @@ import ShelveBooks from "../../components/ShelveBooks";
 import ShelveCategory from "../../components/ShelveCategory";
 import { BooksContext } from "../../contexts/books";
 import { CategoriesContext } from "../../contexts/categories";
-import { addBookToShelve, removeBookFromShelve, setShelveCategory } from "../../redux/actions";
+import { addBookToShelve, removeBookFromShelve, setShelveCategory, setShelveReview } from "../../redux/actions";
 import { getBooksOnShelves, getShelve } from "../../redux/selectors";
 import styles from "./styles.module.sass";
 
@@ -22,6 +22,7 @@ const Shelve = ({ name }) => {
     const onAdd = useCallback((id) => dispatch(addBookToShelve(name, id)), [dispatch, name]);
     const onRemove = useCallback((id) => dispatch(removeBookFromShelve(name, id)), [dispatch, name]);
     const onCategoryChange = useCallback((id) => dispatch(setShelveCategory(name, id)), [dispatch, name]);
+    const onReviewChange = useCallback((e) => dispatch(setShelveReview(name, e.target.value)), [dispatch, name]);
 
     if (!shelve) {
         return (
@@ -41,9 +42,15 @@ const Shelve = ({ name }) => {
             </Head>
             <div>
                 <Typography.Title level={1}>{name}</Typography.Title>
+                <Input.TextArea value={shelve.review} rows={4} onChange={onReviewChange} />
+
+                <div className={styles.Spacer} />
+
                 <Typography.Title level={2}>Category</Typography.Title>
                 <ShelveCategory value={shelve.category} items={categories} onChange={onCategoryChange} />
+
                 <div className={styles.Spacer} />
+
                 <Typography.Title level={2}>Books</Typography.Title>
                 <div>
                     <ShelveBooks
