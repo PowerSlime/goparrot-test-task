@@ -52,6 +52,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-localstorage": "^0.4.1",
     "sass": "^1.26.10",
     "swr": "^0.3.0"
   }
