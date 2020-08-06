@@ -26,6 +26,7 @@ module.exports = {
         "prettier/prettier": "error",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
+        "react/display-name": 0,
         "sort-imports": "off", // Required by simple-import-sort
         "import/order": "off", // Required by simple-import-sort
         "simple-import-sort/sort": "error",
