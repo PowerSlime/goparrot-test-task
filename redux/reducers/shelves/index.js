@@ -47,6 +47,7 @@ const reducer = (state = initialState, { type, payload }) => {
                     [payload.name]: {
                         ...state[payload.name],
                         category: payload.id,
+                        books: [],
                     },
                 };
             }

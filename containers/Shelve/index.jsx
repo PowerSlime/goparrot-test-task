@@ -5,18 +5,23 @@ import React, { useCallback, useContext } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import ShelveBooks from "../../components/ShelveBooks";
+import ShelveCategory from "../../components/ShelveCategory";
 import { BooksContext } from "../../contexts/books";
-import { addBookToShelve, removeBookFromShelve } from "../../redux/actions";
+import { CategoriesContext } from "../../contexts/categories";
+import { addBookToShelve, removeBookFromShelve, setShelveCategory } from "../../redux/actions";
 import { getBooksOnShelves, getShelve } from "../../redux/selectors";
+import styles from "./styles.module.sass";
 
 const Shelve = ({ name }) => {
     const shelve = useSelector(getShelve(name), shallowEqual);
     const dispatch = useDispatch();
+    const categories = useContext(CategoriesContext);
     const books = useContext(BooksContext);
     const booksOnShelves = useSelector(getBooksOnShelves, shallowEqual);
 
     const onAdd = useCallback((id) => dispatch(addBookToShelve(name, id)), [dispatch, name]);
     const onRemove = useCallback((id) => dispatch(removeBookFromShelve(name, id)), [dispatch, name]);
+    const onCategoryChange = useCallback((id) => dispatch(setShelveCategory(name, id)), [dispatch, name]);
 
     if (!shelve) {
         return (
@@ -36,11 +41,15 @@ const Shelve = ({ name }) => {
             </Head>
             <div>
                 <Typography.Title level={1}>{name}</Typography.Title>
+                <Typography.Title level={2}>Category</Typography.Title>
+                <ShelveCategory value={shelve.category} items={categories} onChange={onCategoryChange} />
+                <div className={styles.Spacer} />
                 <Typography.Title level={2}>Books</Typography.Title>
                 <div>
                     <ShelveBooks
                         value={shelve.books}
                         books={books}
+                        category={shelve.category}
                         exclude={booksOnShelves}
                         onAdd={onAdd}
                         onDelete={onRemove}

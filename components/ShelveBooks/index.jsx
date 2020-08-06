@@ -5,10 +5,14 @@ import React, { useCallback, useMemo } from "react";
 
 import { getAvailableBooks } from "../../utils/books";
 
-const ShelveBooks = ({ value, books, exclude, onAdd, onDelete }) => {
+const ShelveBooks = ({ value, books, category, exclude, onAdd, onDelete }) => {
     const usedBooks = useMemo(() => uniq(value.concat(exclude)), [exclude, value]);
+    const filteredBooks = useMemo(() => (category ? books.filter((book) => book.category === category) : books), [
+        books,
+        category,
+    ]);
 
-    const options = useMemo(() => getAvailableBooks(books, usedBooks), [books, usedBooks]);
+    const options = useMemo(() => getAvailableBooks(filteredBooks, usedBooks), [filteredBooks, usedBooks]);
     const booksToRender = value.map((id) => books.find((book) => book.id === id));
 
     const onSelect = useCallback((id) => onAdd(id), [onAdd]);
@@ -47,6 +51,7 @@ ShelveBooks.propTypes = {
             description: PropTypes.string,
         }),
     ),
+    category: PropTypes.number,
     onAdd: PropTypes.func,
     onDelete: PropTypes.func,
 };
@@ -56,6 +61,7 @@ ShelveBooks.defaultProps = {
     exclude: [],
     books: [],
     filter: [],
+    category: undefined,
     onAdd: () => undefined,
     onDelete: () => undefined,
 };

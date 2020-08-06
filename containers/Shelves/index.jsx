@@ -1,29 +1,20 @@
 import { Button, Input, Table } from "antd";
 import cn from "classnames";
 import { useRouter } from "next/router";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useContext, useMemo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
+import { CategoriesContext } from "../../contexts/categories";
 import { addShelve } from "../../redux/actions";
 import { getShelvesStore } from "../../redux/selectors";
 import styles from "./styles.module.sass";
-
-const columns = [
-    {
-        title: "Name",
-        dataIndex: "key",
-    },
-    {
-        title: "Category",
-        dataIndex: "category",
-    },
-];
 
 const Shelves = () => {
     const [shelveName, setShelveName] = useState("");
     const shelves = useSelector(getShelvesStore, shallowEqual);
     const dispatch = useDispatch();
     const router = useRouter();
+    const categories = useContext(CategoriesContext);
 
     const data = useMemo(
         () =>
@@ -32,6 +23,21 @@ const Shelves = () => {
                 ...shelve,
             })),
         [shelves],
+    );
+
+    const columns = useMemo(
+        () => [
+            {
+                title: "Name",
+                dataIndex: "key",
+            },
+            {
+                title: "Category",
+                dataIndex: "category",
+                render: (value) => <div>{categories.find((category) => category.id === value)?.name}</div>,
+            },
+        ],
+        [categories],
     );
 
     const onInputChange = (e) => {
