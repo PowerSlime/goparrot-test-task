@@ -56,11 +56,14 @@ const Shelves = () => {
         [dispatch, shelf],
     );
 
-    const onRow = (record) => {
-        return {
-            onClick: () => router.push(`/shelves/[name]`, `/shelves/${record.key}`),
-        };
-    };
+    const onRow = useCallback(
+        (record) => {
+            return {
+                onClick: () => router.push(`/shelves/[name]`, `/shelves/${record.key}`),
+            };
+        },
+        [router],
+    );
 
     return (
         <div>

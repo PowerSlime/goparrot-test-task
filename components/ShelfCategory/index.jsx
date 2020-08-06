@@ -4,7 +4,7 @@ import React from "react";
 
 const ShelfCategory = ({ value, items, onChange }) => {
     return (
-        <Select value={value} placeholder="Shelf category" allowClear onChange={onChange}>
+        <Select value={value} placeholder="Shelf category" allowClear style={{ width: "200px" }} onChange={onChange}>
             {items.map((item) => (
                 <Select.Option key={item.id} value={item.id}>
                     {item.name}

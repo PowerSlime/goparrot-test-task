@@ -1,26 +1,19 @@
 import { Table } from "antd";
 import React, { useCallback, useContext, useMemo, useState } from "react";
 
+import BookModal from "../../components/BookModal";
 import { BooksContext } from "../../contexts/books";
 import { CategoriesContext } from "../../contexts/categories";
 
 const Books = () => {
-    const [selected, setSelected] = useState([]);
+    const [clickedBook, setClickedBook] = useState(null);
 
     const books = useContext(BooksContext);
     const categories = useContext(CategoriesContext);
-    const data = useMemo(() => books.map((book) => ({ key: book.id, ...book })), [books]);
 
     const categoriesMap = useMemo(() => Object.fromEntries(categories.map((item) => [item.id, item])), [categories]);
 
-    const onSelectChange = useCallback((items) => {
-        setSelected(items);
-    }, []);
-
-    const rowSelection = {
-        selectedRowKeys: selected,
-        onChange: onSelectChange,
-    };
+    const onModalClose = useCallback(() => setClickedBook(null), []);
 
     const columns = useMemo(
         () => [
@@ -45,7 +38,19 @@ const Books = () => {
         [categoriesMap],
     );
 
-    return <Table rowSelection={rowSelection} columns={columns} dataSource={data} />;
+    const onRow = useCallback(
+        (record) => ({
+            onClick: () => setClickedBook(record),
+        }),
+        [],
+    );
+
+    return (
+        <React.Fragment>
+            <Table columns={columns} dataSource={books} rowKey="id" onRow={onRow} />
+            <BookModal value={clickedBook} onClose={onModalClose} />
+        </React.Fragment>
+    );
 };
 
 export default Books;

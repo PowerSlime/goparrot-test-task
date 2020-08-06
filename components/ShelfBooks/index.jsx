@@ -17,6 +17,11 @@ const ShelfBooks = ({ value, books, category, exclude, onAdd, onDelete }) => {
 
     const onSelect = useCallback((id) => onAdd(id), [onAdd]);
 
+    const filter = useCallback((input, option) => {
+        const title = option.children.join("");
+        return title.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    }, []);
+
     return (
         <div>
             {booksToRender.map((book) => (
@@ -25,7 +30,14 @@ const ShelfBooks = ({ value, books, category, exclude, onAdd, onDelete }) => {
                 </Tag>
             ))}
             {options.length ? (
-                <Select value={null} placeholder="Book to add" onSelect={onSelect}>
+                <Select
+                    value={null}
+                    showSearch
+                    placeholder="Book to add"
+                    filterOption={filter}
+                    style={{ width: "200px" }}
+                    onSelect={onSelect}
+                >
                     {options.map((book) => (
                         <Select.Option key={book.id} value={book.id}>
                             {book.title} ({book.author})
