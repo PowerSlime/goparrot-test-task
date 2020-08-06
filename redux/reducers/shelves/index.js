@@ -14,6 +14,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case ADD_SHELVE:
             if (!(payload.name in state)) {
                 return {
+                    ...state,
                     [payload.name]: { books: [], category: undefined, review: "" },
                 };
             }

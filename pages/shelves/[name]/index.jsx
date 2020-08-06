@@ -5,8 +5,8 @@ import DefaultLayout from "../../../layouts/default";
 
 const ShelvePage = () => {
     const router = useRouter();
-    const id = parseInt(router.query.id);
-    return <DefaultLayout>{id}</DefaultLayout>;
+    const name = router.query.name;
+    return <DefaultLayout>{name}</DefaultLayout>;
 };
 
 export default ShelvePage;
