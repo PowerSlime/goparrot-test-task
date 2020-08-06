@@ -67,7 +67,9 @@ const Shelves = () => {
             <div className={styles.ButtonsContainer}>
                 <form className={cn(styles.Actions, styles.Buttons)} onSubmit={onSubmit}>
                     <Input value={shelf} placeholder="Name" onChange={onInputChange} />
-                    <Button type="submit">Add</Button>
+                    <Button type="primary" htmlType="submit">
+                        Add
+                    </Button>
                 </form>
             </div>
             <Table columns={columns} dataSource={data} onRow={onRow} />

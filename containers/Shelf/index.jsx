@@ -42,7 +42,7 @@ const Shelf = ({ name }) => {
             </Head>
             <div>
                 <Typography.Title level={1}>{name}</Typography.Title>
-                <Input.TextArea value={shelf.review} rows={4} onChange={onReviewChange} />
+                <Input.TextArea value={shelf.review} rows={4} placeholder="Review" onChange={onReviewChange} />
 
                 <div className={styles.Spacer} />
 
