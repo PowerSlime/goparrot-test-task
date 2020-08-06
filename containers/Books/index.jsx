@@ -25,6 +25,10 @@ const Books = () => {
     const columns = useMemo(
         () => [
             {
+                title: "Title",
+                dataIndex: "title",
+            },
+            {
                 title: "Author",
                 dataIndex: "author",
             },
