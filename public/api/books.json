@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "author": "Author #1",
+    "category": 1,
+    "description": "Some description about the book #1"
+  },
+  {
+    "id": 2,
+    "author": "Author #2",
+    "category": 2,
+    "description": "Some description about the book #2"
+  },
+  {
+    "id": 3,
+    "author": "Author #3",
+    "category": 3,
+    "description": "Some description about the book #3"
+  },
+  {
+    "id": 4,
+    "author": "Author #4",
+    "category": 2,
+    "description": "Some description about the book #4"
+  },
+  {
+    "id": 5,
+    "author": "Author #5",
+    "category": 3,
+    "description": "Some description about the book #5"
+  }
+]

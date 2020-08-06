@@ -1,0 +1,53 @@
+{
+  "name": "goparrot-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "build": "next build",
+    "dev": "next",
+    "export": "npm run build && next export -o dist",
+    "lint:check": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix .",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PowerSlime/goparrot-test-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PowerSlime/goparrot-test-task/issues"
+  },
+  "homepage": "https://github.com/PowerSlime/goparrot-test-task#readme",
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "prettier": "^2.0.5",
+    "prop-types": "^15.7.2"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "@babel/plugin-proposal-numeric-separator": "^7.10.4",
+    "antd": "^4.5.2",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "next": "^9.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass": "^1.26.10",
+    "swr": "^0.3.0"
+  }
+}
