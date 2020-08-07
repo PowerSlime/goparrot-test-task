@@ -4,6 +4,7 @@ import React, { useCallback, useContext, useMemo, useState } from "react";
 import BookModal from "../../components/BookModal";
 import { BooksContext } from "../../contexts/books";
 import { CategoriesContext } from "../../contexts/categories";
+import styles from "./styles.module.sass";
 
 const Books = () => {
     const [clickedBook, setClickedBook] = useState(null);
@@ -47,7 +48,7 @@ const Books = () => {
 
     return (
         <React.Fragment>
-            <Table columns={columns} dataSource={books} rowKey="id" onRow={onRow} />
+            <Table className={styles.Table} columns={columns} dataSource={books} rowKey="id" onRow={onRow} />
             <BookModal value={clickedBook} onClose={onModalClose} />
         </React.Fragment>
     );

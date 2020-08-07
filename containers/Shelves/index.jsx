@@ -75,7 +75,7 @@ const Shelves = () => {
                     </Button>
                 </form>
             </div>
-            <Table columns={columns} dataSource={data} onRow={onRow} />
+            <Table className={styles.Table} columns={columns} dataSource={data} onRow={onRow} />
         </div>
     );
 };
