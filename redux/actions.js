@@ -5,6 +5,7 @@ import {
     REMOVE_SHELF,
     SET_SHELF_CATEGORY,
     SET_SHELF_REVIEW,
+    TOGGLE_THEME,
 } from "./actionTypes";
 
 export const addShelf = (name) => ({
@@ -51,4 +52,8 @@ export const removeBookFromShelf = (shelfName, bookId) => ({
         name: shelfName,
         id: bookId,
     },
+});
+
+export const toggleTheme = () => ({
+    type: TOGGLE_THEME,
 });

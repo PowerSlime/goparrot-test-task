@@ -46,4 +46,4 @@ const Menu = () => {
     );
 };
 
-export default React.memo(Menu);
+export default Menu;

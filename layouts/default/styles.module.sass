@@ -1,7 +1,18 @@
 .Layout
-    min-height: calc(100vh - var(--used-height))
+    min-height: calc(100vh - var(--used-height)) !important
 
 .Container
     background: #ffffff
     margin: 15px
     padding: 15px
+
+    &.Dark
+        background: #262626
+
+.Header
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+
+.ThemeSwitcher
+    margin-left: auto

@@ -4,3 +4,5 @@ export const ADD_SHELF = "ADD_SHELF";
 export const REMOVE_SHELF = "REMOVE_SHELF";
 export const SET_SHELF_REVIEW = "SET_SHELF_REVIEW";
 export const SET_SHELF_CATEGORY = "SET_SHELF_CATEGORY";
+
+export const TOGGLE_THEME = "TOGGLE_THEME";
