@@ -22,7 +22,7 @@ jobs:
           BACKEND_URL: /goparrot-test-task/api/
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3
+        uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
