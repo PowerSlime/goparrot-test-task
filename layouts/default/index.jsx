@@ -1,18 +1,15 @@
 import { Layout } from "antd";
 import cn from "classnames";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import ThemeSwitcher from "../../components/ThemeSwitcher";
 import Menu from "../../containers/Menu";
-import { toggleTheme } from "../../redux/actions";
-import { getTheme } from "../../redux/selectors";
+import { ThemeContext } from "../../contexts/theme";
 import styles from "./styles.module.sass";
 
 // eslint-disable-next-line react/prop-types
 const DefaultLayout = ({ children }) => {
-    const { isDark } = useSelector(getTheme, shallowEqual);
-    const dispatch = useDispatch();
+    const { isDark, toggle } = useContext(ThemeContext);
 
     const headerElement = useRef(null);
     const [usedHeight, setUsedHeight] = useState(0);
@@ -28,7 +25,7 @@ const DefaultLayout = ({ children }) => {
         setUsedHeight(height);
     }, [headerElement]);
 
-    const onThemeSwitcherClick = useCallback(() => dispatch(toggleTheme()), [dispatch]);
+    const onThemeSwitcherClick = useCallback(() => toggle(), [toggle]);
 
     return (
         <div className={cn({ "dark-theme": isDark })}>

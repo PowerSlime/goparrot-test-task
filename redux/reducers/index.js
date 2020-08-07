@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 
 import shelves from "./shelves";
-import theme from "./theme";
 
-const rootReducer = combineReducers({ shelves, theme });
+const rootReducer = combineReducers({ shelves });
 export default rootReducer;

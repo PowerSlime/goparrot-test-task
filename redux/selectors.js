@@ -8,5 +8,3 @@ export const getBooksOnShelves = (store) => {
         return accumulator.concat(books);
     }, []);
 };
-
-export const getTheme = (store) => store.theme;
